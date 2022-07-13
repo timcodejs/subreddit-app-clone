@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/header/header';
+import Main from './pages/main';
+import GlobalStyle from './styles/globalStyled';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Router>
+        <Routes>
+          <Route
+            path="/how-it-works"
+            element={
+              <Header>
+                <h1>How it works</h1>
+              </Header>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Header>
+                <h1>About</h1>
+              </Header>
+            }
+          />
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
